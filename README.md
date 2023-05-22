@@ -27,7 +27,65 @@ You'll have to make sure that the list reflects the items that are available for
 Adjust the idcard options seen below to match your needs.  Driverlicense cdl and motorcycle license can all use a single ID card showing endorsements for each class.  If the basic driver license is revoked the user will not have access to obtain any license.
 
 qbx-cityhall idcard Items 
+Client Side
 ```lua
+local function OpenCityhallIdentityMenu(closestCityhall)
+    local licensesMeta = PlayerData.metadata["licences"]
+    local availableLicenses = table_clone(Config.Cityhalls[closestCityhall].licenses)
+    for license, data in pairs(availableLicenses) do
+        if data.metadata and not licensesMeta[data.metadata] then
+            availableLicenses[license] = nil
+        end
+    end
+    local identityOptions = {}
+    for item, id in pairsInOrder(availableLicenses) do
+        identityOptions[#identityOptions + 1] = {
+            title = id.label,
+            description = ('Price: $%s'):format(id.cost),
+            onSelect = function()
+                lib.notify({ title = 'City Hall', description = 'Taking your photograph', duration = 5000, type = 'inform' })
+                mugshotURL = exports["MugShotBase64"]:GetMugShotBase64(PlayerPedId(), true)
+                TriggerServerEvent('qb-cityhall:server:requestId', item, closestCityhall, mugshotURL)
+                if not Config.UseTarget and inRangeCityhall then
+                    lib.showTextUI('[E] Open Cityhall')
+                end
+            end
+        }
+    end
+    lib.registerContext({
+        id = 'cityhall_identity_menu',
+        title = 'Identity',
+        menu = 'cityhall_menu',
+        onExit = function()
+            if not Config.UseTarget and inRangeCityhall then
+                lib.showTextUI('[E] Open Cityhall')
+            end
+        end,
+        options = identityOptions
+    })
+    lib.showContext('cityhall_identity_menu')
+end 
+```
+Server Side
+```lua
+RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall, mugshotURL)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local itemlabels = exports.ox_inventory:Items()
+    if not Player then return end
+    local itemInfo = Config.Cityhalls[hall].licenses[item]
+    if not Player.Functions.RemoveItem("money", itemInfo.cost) then
+        return TriggerClientEvent('ox_lib:notify', src, { description = ('You don\'t have enough money on you, you need %s cash'):format(itemInfo.cost), type = 'error' })
+    end
+    local info = {}
+    if item == nil then
+        return DropPlayer(src, 'Attempted exploit abuse')
+    else
+        TriggerEvent('qbx-cityhall:createCard', src, mugshotURL, item)
+    end
+    TriggerClientEvent('ox_lib:notify', src, { description = ('You have received your %s for $%s'):format(itemlabels[item].label, itemInfo.cost), type = 'success' })
+end)
+
 RegisterServerEvent('qbx-cityhall:createCard', function(player, url, type)
 	local src = player
 	local Player = QBCore.Functions.GetPlayer(src)
