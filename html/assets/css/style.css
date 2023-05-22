@@ -1,0 +1,154 @@
+@font-face {
+  font-family: justsignature;
+  src: url('../fonts/justsignature/JustSignature.woff');
+}
+body, html {
+  width: 100%;
+  height: 100%;
+}
+p {
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  color: #9e9e9e;
+  font-size: 12px;
+}
+
+#mugshot {
+  height: 165px;
+  width: 126px;
+}
+
+#id-card {
+  position: relative;
+  display: none;
+  margin: 230px 50px 0 0;
+  float: right;
+  width: 457px;
+  height: 272px;
+  padding: 54px 17px 10px 144px;
+  background: url("../images/idcard.png");
+}
+img {
+  position: absolute;
+  left:6px;
+  top:41px;
+}
+#idnum {
+  font-weight: bolder;
+  font-size: 18px;
+  color: #282828;
+  position: absolute;
+  top: 40px;
+  left: 190px;
+}
+#expiry {
+  font-weight: bolder;
+  font-size: 18px;
+  color: #282828;
+  position: absolute;
+  top: 79px;
+  left: 190px;
+}
+#name {
+  font-weight: bolder;
+  font-size: 18px;
+  color: #282828;
+  position: absolute;
+  top: 105px;
+  left: 190px;
+}
+#fname {
+  font-weight: bolder;
+  font-size: 18px;
+  color: #282828;
+  position: absolute;
+  top: 131px;
+  left: 190px;
+}
+#inline {
+  position: absolute;
+  top: 0px;
+}
+#dob {
+  position: absolute;
+  left: 190px;
+  top: 182px;
+  font-weight: bolder;
+  font-size: 18px;
+  color: #282828;
+  width: 100px;
+}
+#sex {
+  position: absolute;
+  color: #b34949;
+  font-weight: bolder;
+  left: 245px;
+  top: 210px;
+}
+#nationality {
+  position: absolute;
+  color: #b34949;
+  font-weight: bolder;
+  left: 245px;
+  top: 223px;
+}
+#dstatus {
+  position: absolute;
+  top: 55px;
+  color: #b91313 !important;
+  font-weight: bolder;
+  right: 12px;
+  width: 55px;
+}
+#bstatus {
+  position: absolute;
+  top: 70px;
+  color: #b91313 !important;
+  font-weight: bolder;
+  right: 12px;
+  width: 55px;
+}
+#cstatus {
+  position: absolute;
+  top: 85px;
+  color: #b91313 !important;
+  font-weight: bolder;
+  right: 12px;
+  width: 55px;
+}
+#weapon {
+  position: absolute;
+  top: 85px;
+  color: #b91313 !important;
+  font-weight: bolder;
+  right: 12px;
+  width: 55px;
+}
+#weapon2 {
+  position: absolute;
+  top: 100px;
+  color: #b91313 !important;
+  font-weight: bolder;
+  right: 12px;
+  width: 55px;
+}
+#pilot {
+  position: absolute;
+  top: 100px;
+  color: #b91313 !important;
+  font-weight: bolder;
+  right: 12px;
+  width: 55px;
+}
+#signature {
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
+  color: #272727;
+  font-weight: bolder;
+  font-size: 19px;
+  text-transform:capitalize;
+  font-family: justsignature;
+}
+
