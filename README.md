@@ -1,12 +1,7 @@
 # dds-identification
 An identification card resource modified for ox_inventory for QBox Framework.
 
-# This is an adaptation of qidentification for the QBox framework. [QuantusRP](https://github.com/QuantusRP/qidentification)
-# All credits goes to [Noms](https://github.com/OfficialNoms) for creating this script first.
-
-This resource was inspired by the original jsfour identification script and still uses some of the javascript from it. The rest of the LUA is entirely re-written.
-
-![ID Card Preview](https://i.imgur.com/PxVi8jK.png)
+# Discord for more releases and support [dDStudio] https://discord.gg/P9ZzdzYaqm
 
 # Dependencies
 ## Hard Dependencies
@@ -153,3 +148,10 @@ end
 		}
 	},
 ```
+
+# This is an adaptation of qidentification for the QBox framework. [QuantusRP](https://github.com/QuantusRP/qidentification)
+# All credits goes to [Noms](https://github.com/OfficialNoms) for creating this script first.
+
+This resource was inspired by the original jsfour identification script and still uses some of the javascript from it. The rest of the LUA is entirely re-written.
+
+![ID Card Preview](https://i.imgur.com/PxVi8jK.png)
