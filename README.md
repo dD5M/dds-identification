@@ -121,8 +121,6 @@ local function GiveStarterItems(source)
 end
 ```
 ## ox_inventory/data/items.lua
-
-## ox_inventory/data/items.lua
 ```lua
 	['identification'] = {
 		label = 'Identification',
